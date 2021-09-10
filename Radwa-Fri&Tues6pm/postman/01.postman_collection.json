@@ -1,0 +1,469 @@
+{
+	"info": {
+		"_postman_id": "33136ac5-1b2a-48b8-aa9b-40101ef20ae4",
+		"name": "01",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "getallusers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/getallusers",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"getallusers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "adduser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Radwa\",\r\n    \"email\":\"Radwa@gmail.com\",\r\n    \"password\":\"\",\r\n    \"age\":\"22\",\r\n    \"location\":\"sara@location\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/adduser",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"adduser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateuser",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Hala\",\r\n    \"email\":\"Hala@gmail.com\",\r\n    \"password\":\"Hala1234\",\r\n    \"age\":\"32\",\r\n    \"location\":\"hala@location\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/updateuser/6135c467034b15711b03f02e",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"updateuser",
+								"6135c467034b15711b03f02e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteuser",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/deleteuser/613a8d46ff1979ebf9550282",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"deleteuser",
+								"613a8d46ff1979ebf9550282"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getuser_id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/getuser-id/613a8d46ff1979ebf9550282",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"getuser-id",
+								"613a8d46ff1979ebf9550282"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getuser_name&email",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/getuser-name&email/a/Sara@gmail.com",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"getuser-name&email",
+								"a",
+								"Sara@gmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getuser_name&email Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Radwa\",\r\n    \"email\":\"Hala@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/getuser-nameemail",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"getuser-nameemail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getusers_age>30",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/getusers-gt30",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"getusers-gt30"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getusers_age<30",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/getusers-lt30",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"getusers-lt30"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getusers_age<=30",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/getusers-lte30",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"getusers-lte30"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Blogs",
+			"item": [
+				{
+					"name": "getallblogs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/getallblogs",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"getallblogs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addblog",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"blog3\",\r\n    \"content\":\"blog3_content\",\r\n    \"createdby\":\"613a8d7dff1979ebf9550287\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/addblog",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"addblog"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateblog",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"blogxxx\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/updateblog/61398fb9944e36ac74b6dd7b",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"updateblog",
+								"61398fb9944e36ac74b6dd7b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteallblogs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/deleteallblogs",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"deleteallblogs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "return_deletedblogs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/returnblogs",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"returnblogs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getblog_id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/getblog-id/61398f133469f43c4720447e",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"getblog-id",
+								"61398f133469f43c4720447e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getblog_title&content",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/getblog-title&content/blog5/blog5_content",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"getblog-title&content",
+								"blog5",
+								"blog5_content"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getblogs_createdby",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"createdby\":\"613986f5db5e5f95ecfb02cb\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/getblog-user",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"getblog-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getblogs_createdby Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Ali\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/getblog-user",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"getblog-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getblogs_createdtoday",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/getallblogs-today",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"getallblogs-today"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getblogs_createdyesterday",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/getallblogs-yesterday",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"getallblogs-yesterday"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

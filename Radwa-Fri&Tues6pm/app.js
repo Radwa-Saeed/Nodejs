@@ -1,10 +1,14 @@
-const express = require("express");
-const app = express();
-const router = require("./modules/users/routes/userrouts");
+const express = require('express')
+require("dotenv").config();
+const connection = require('./config/configMongoDB');
+const userRouter = require('./modules/users/routes/userRoutes');
+const blogRouter = require('./modules/blogs/routes/blogRoutes');
+const app = express()
+const port = process.env.PORT
 
-app.use(express.json());
-app.use(router);
-
-app.listen(4000,()=>{
-    console.log("server is running on 4000")
-})
+app.use(express.json())
+app.use(userRouter)
+app.use(blogRouter)
+connection();
+app.get('/', (req, res) => res.send('Hello World!')) //localhost:3000
+app.listen(port, () => console.log(`Example app listening on port ${port}!`))
