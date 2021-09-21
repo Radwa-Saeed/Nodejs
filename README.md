@@ -1,24 +1,28 @@
-## * assignment  * 
-## create express application with two modules (User && Blogs) 
-## User has (name ,email,password ,age ,location)
-## Blogs has (title ,content,createdBy)
-## APIS CRUD Operation For User module 
-## 1- CREATE New USER with Validation (using Joi) each filed not null and for age min age 20 and max age 60 and set error message  
-## 2- UPDATE USER  validate  using Joi
-## 3- DELETE USER && Soft DELETE   validate params using Joi
-## 4- List All User  
-## 5- get specific user with id   validate params using Joi
-## 6- search about user in (name and email) => front-end write char or word and back  this user    validate params using Joi 
-## 7 - get all user with age greate than 30   validate  using Joi
-## 8 - get all user with age less than 30   validate  using Joi
-## 9 - get all user with age less or equal than 30  validate params using Joi
-## APIS CRUD Operation For Blogs module 
-## 1- CREATE New Blog with Validation (JOI) each filed not null   c each blog connected to one user  (search on how to connect tow collection in mongodb 
-## 2- UPDATE Blogs  validate params using Joi
-## 3- DELETEAll Blogs 
-## 5- get specific Blog with id  validate params using Joi
-## 6- search about Blog in (title and content) => front-end write char or word and back- Blogs && Soft DELETE   validate  using Joi
-## 4- List end  return  this Blog  
-## 7- get blogs that created by specific user  validate params using Joi
-## 8- get blogs that created today (using moment)
-## 9- get blogs that created yesterday (using moment)
+1- Users(user , superAdmin ,Admin)
+• Signup ( username , email , password , cPassword , phone , location , role default: user) validation joi
+Hash password and encrypt phone number
+• Signin (email ,password) Joi validation (compare password , generate token)
+• Update profile with Joi validation ( must be login first and have valid token)
+• Update password (old password , newPassword , cNewPassword) Joi validation
+2- Posts
+• Create Post (title , desc , createdBy => ref :User) Joi validation
+• edit post Joi validation
+• delete post Joi validation
+• user get profile post
+• user view news feed( all users post) for users whose account not deactivate or post blocked by admin
+• user can report other post every post only one time for each post ( userID , postID , reportComment) Joi validation
+• user can deactivate his account
+• view advertising
+3- Admin(inserted manual first time in DB with role superAdmin)
+• Get users List
+• Add other admin with role admin ( super Admin only)
+• Get admin list (superAdmin only)
+• Delete admin(superAdmin only)
+Admin and superAdmin can
+• CRUD advertising (title , desc ) Joi
+• View all post
+• Review report and take action to block post or not
+• Block user
+
+• \*important note all data must run under validation using Joi ( body , param , query)
+Must user be signing and have token to do any of this based on his role

@@ -1,20 +1,15 @@
-const reqValidation = require("../../../commonValidation/reqValidation")
-const { adduserSchemaValidation } = require("../validation/userValidation")
-const { getallusers, adduser, deleteuser, updateuser, getuser_id, getuser_nameandemail, getuserbynameandemail, getuser_gt30, getuser_lt30, getuser_lte30 } = require("../controllers/userControllers")
+const router = require('express').Router()
+
+const reqValid = require('../../../common/validationJoi/reqValid')
+const { sign_upValidationSchema, sign_inValidationSchema, update_profileValidationSchema, update_passwordValidationSchema } = require('../validation/userValid')
+const { sign_up, sign_in, update_profile, update_password, deactivate } = require('../controllers/userControllers')
+const isAuthorized = require('../../../common/authorization/isAuthorized')
+const { UPDATE_PROFILE, UPDATE_PASSWORD, DEACTIVATE_ACC } = require('../endPoints')
 
 
-const router=require("express").Router()
-
-router.get("/getallusers",getallusers) // localhost:5000/getallusers
-router.post("/adduser",reqValidation(adduserSchemaValidation),adduser)  // localhost:5000/adduser
-router.delete("/deleteuser/:_id",deleteuser) // localhost:5000/deleteuser/6135c4567ede2bbafc305193
-router.put("/updateuser/:_id",updateuser) // localhost:5000/updateuser/6135c467034b15711b03f02e
-router.get("/getuser-id/:_id",getuser_id) // localhost:5000/getuser-id/6135c467034b15711b03f02e
-router.get("/getuser-name&email/:getname/:getemail",getuser_nameandemail) // localhost:5000/getuser-name&email/a/Hala@gmail.com
-router.post("/getuser-nameemail",getuserbynameandemail) // localhost:5000/getuser-nameemail
-router.get("/getusers-gt30",getuser_gt30) // localhost:5000/getusers-gt30
-router.get("/getusers-lt30",getuser_lt30) // localhost:5000/getusers-lt30
-router.get("/getusers-lte30",getuser_lte30) // localhost:5000/getusers-lte30
-
+router.post ('/signup',reqValid(sign_upValidationSchema),sign_up) // localhost:5000/signup
+router.post ('/signin',reqValid(sign_inValidationSchema),sign_in) // localhost:5000/signin
+router.put ('/updateprofile',isAuthorized(UPDATE_PROFILE),reqValid(update_profileValidationSchema),update_profile) // localhost:5000/updateprofile
+router.put ('/updatepassword',isAuthorized(UPDATE_PASSWORD),reqValid(update_passwordValidationSchema),update_password) // localhost:5000/updatepassword
+router.delete('/deactivate',isAuthorized(DEACTIVATE_ACC),deactivate) // localhost:5000/deactivate
 module.exports=router
-
