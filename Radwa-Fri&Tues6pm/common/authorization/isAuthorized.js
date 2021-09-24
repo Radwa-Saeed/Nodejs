@@ -5,20 +5,30 @@ const rbac = require("../../rbac/rbac");
 
 module.exports=(endPoint)=>{
     return async(req,res,next)=>{
-        try {
+        if(req.headers.authorization){
             const token = req.headers.authorization.split(' ')[1];
-            const decode = jwt.verify(token,'shhhhh');
-            const isAllowed = await rbac.can(decode.role,endPoint)
-            req.user=decode
-            if (isAllowed){
-                next()
+            if(token){
+                try {
+                    const decode = jwt.verify(token,process.env.SECRET_KEY);
+                    const isAllowed = await rbac.can(decode.role,endPoint)
+                    req.user=decode
+                    if (isAllowed){
+                        next()
+                    }
+                    else {
+                        res.status(StatusCodes.FORBIDDEN).json({message:`UNAUTHORIZED... ${req.user.role} NOT ALLOWED TO DO THAT`})
+                    }
+                }
+                    
+                catch (error) {
+                    res.status(StatusCodes.BAD_REQUEST).json({message:"ERROR",error})
+                }
             }
-            else {
-                res.status(StatusCodes.UNAUTHORIZED).json({message:'YOU ARE NOT ALLOWED TO DO THAT'})
+            else{
+                res.status(StatusCodes.UNAUTHORIZED).json({message:"TOKEN CAN NOT BE EMPTY "})
             }
         }
-            
-        catch (error) {
-            res.status(StatusCodes.BAD_REQUEST).json({message:"ERROR",error})
+        else {
+            res.status(StatusCodes.UNAUTHORIZED).json({message:"TOKEN REQUIRED"})
         }
     }}

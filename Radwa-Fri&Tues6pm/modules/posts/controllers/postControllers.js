@@ -78,15 +78,13 @@ const getprofilepost = async(req,res)=>{
     const {_id}=req.body
     try {
         const foundpost = await Post.findById({_id}).populate('createdby')
-        res.status(StatusCodes.OK).json({message:'CREATOR PROFILE',Post:{
-            PostTitle:foundpost.title,
-            PostDesc:foundpost.desc
-        },Profile:{
+        const profposts = await Post.find({createdby:foundpost.createdby,isDeleted:false}).select('-createdby -isDeleted -isBlocked -updatedAt -__v -reports')
+        res.status(StatusCodes.OK).json({message:'CREATOR PROFILE',Profile:{
             Username : foundpost.createdby.username,
             Email:foundpost.createdby.email,
             Phone:foundpost.createdby.phone,
             Location:foundpost.createdby.location
-        }})            
+        },POSTS:profposts})            
     } catch (error) {
         res.status(StatusCodes.BAD_REQUEST).json({message:"ERROR",error})
     }

@@ -16,7 +16,7 @@ const super_admin_signin = async (req, res) => {
         } else {
             const match = await bcrypt.compare(password, found.password)
             if (match) {
-                const token = jwt.sign({ _id: found._id, role: found.role }, 'shhhhh');
+                const token = jwt.sign({ _id: found._id, role: found.role }, process.env.SECRET_KEY);
                 res.status(StatusCodes.OK).json({
                     message: 'SIGNED IN SUCCESS', token, Profile: {
                         id: found._id,

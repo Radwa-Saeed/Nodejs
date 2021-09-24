@@ -13,7 +13,7 @@ const sign_up = async (req,res)=>{
         }
         else{
             if (password==cpassword){
-                //const enc_phone =  jwt.sign(phone,'shhhhh')
+                //const enc_phone =  jwt.sign(phone,process.env.SECRET_KEY)
                 //console.log(enc_phone)
                 const newUser = new User({username,email,password,phone,location,role})
                 const user = await newUser.save()
@@ -39,8 +39,8 @@ const sign_in = async (req,res)=>{
             if(!found.isBlocked){
                 const match = await bcrypt.compare(password,found.password);
                 if (match){
-                    const token = jwt.sign({_id:found._id,role:found.role},'shhhhh'); // encrypt the id and role to give a token 
-                    const decoded_phone = jwt.verify(found.phone,'shhhhh'); //bcrypt the phone
+                    const token = jwt.sign({_id:found._id,role:found.role},process.env.SECRET_KEY); // encrypt the id and role to give a token 
+                    const decoded_phone = jwt.verify(found.phone,process.env.SECRET_KEY); //bcrypt the phone
                     res.status(StatusCodes.OK).json({message:'SIGNED IN SUCCESSFULLY',token,Profile:{
                         id:found._id,
                         username:found.username,
@@ -66,7 +66,7 @@ const update_profile=async(req,res)=>{
     const _id=req.user._id
     const {username,email,phone,location}=req.body
     try {
-        const enc_phone = jwt.sign(phone,'shhhhh');
+        const enc_phone = jwt.sign(phone,process.env.SECRET_KEY);
         await User.findByIdAndUpdate({_id},{username,email,phone:enc_phone,location})
         res.status(StatusCodes.OK).json({message:"UPDATED SUCCESS"})
     } catch (error) {
